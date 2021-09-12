@@ -61,10 +61,10 @@ body {
   padding-right: 30px;
 }
 @media only screen and (max-width: 768px) {
-  #all-products {
+  /* #all-products {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */
   .cart {
     width: 300px;
     /* border: 1px solid green; */
@@ -79,8 +79,8 @@ body {
   }
 }
 @media only screen and (max-width: 468px) {
-  #all-products {
+  /* #all-products {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */
 }
