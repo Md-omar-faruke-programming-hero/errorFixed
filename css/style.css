@@ -43,7 +43,10 @@ body {
   box-shadow: 4px 4px 7px gray;
   border-radius: 10px;
   border: 1px solid tomato;
+  background-color: #FEFBF3;
 }
+
+
 .product-image {
   width: 150px;
   height: 150px;

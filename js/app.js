@@ -1,8 +1,9 @@
 // load api
 const loadProducts = () => {
-  const url = `https://fakestoreapi.com/products`||`../js/data.json `;
-  console.log(url);
-  
+
+
+  const url = `https://fakestoreapi.com/products`;  
+  // const url=`../js/data.json`; //if api server down use this manually
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
@@ -26,13 +27,40 @@ const showProducts = (products) => {
             <h3>${product.title}</h3>
             <p>Category: ${product.category}</p>
             <h2>Price: $ ${product.price}</h2>
-            <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-dark">add to cart</button>
-            <button id="details-btn" class="btn btn-warning">Details</button>
+            <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-primary">add to cart</button>
+            <button onclick="detail(${product.id})"  id="details-btn" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" >Details</button>
+
+           
+          
     </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
+
+// single product deails
+let detail=(id)=>{
+  let title=document.getElementById("exampleModalLabel");
+ title.innerText="";
+ let detailsInfo=document.getElementById("exampleModalLabell");
+ detailsInfo.innerText="";
+   fetch(`https://fakestoreapi.com/products/${id}`)
+   .then(res=>res.json())
+   .then(data=>show(data));
+
+   
+}
+const show=(info)=>{
+  console.log(info);
+ let title=document.getElementById("exampleModalLabel");
+ title.innerText=info.title;
+ let detailsInfo=document.getElementById("exampleModalLabell");
+ detailsInfo.innerText=info.description;
+
+}
+
+
+// count item total product
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
